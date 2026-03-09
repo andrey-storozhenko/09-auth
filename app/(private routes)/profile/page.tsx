@@ -29,7 +29,7 @@ const Profile = async () => {
     </div>
     <div className={css.profileInfo}>
       <p>
-        Username: {user.userName}
+        Username: {user.username}
       </p>
       <p>
         Email: {user.email}
@@ -44,10 +44,10 @@ const Profile = async () => {
 export async function generateMetadata(): Promise<Metadata> {
   const user = await getServerMe();
   return {
-    title: `Profile : ${user.userName}`,
+    title: `Profile : ${user.username}`,
     description: "Your private profile",
     openGraph: {
-      title: `Profile : ${user.userName}`,
+      title: `Profile : ${user.username}`,
       description: "Your private profile",
       url: `https://notehub.com/profile`,
       siteName: 'NoteHub',
