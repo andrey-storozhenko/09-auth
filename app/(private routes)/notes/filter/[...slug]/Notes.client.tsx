@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import SearchBox from "../../../../components/SearchBox/SearchBox";
+import SearchBox from "@/components/SearchBox/SearchBox";
 import css from "./NotesPage.module.css";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import {fetchNotes} from "@/lib/api/clientApi";
 import { useDebouncedCallback } from 'use-debounce';
-import NoteList from "../../../../components/NoteList/NoteList";
-import Pagination from "../../../../components/Pagination/Pagination";
+import NoteList from "@/components/NoteList/NoteList";
+import Pagination from "@/components/Pagination/Pagination";
 import Link from "next/link";
 
 type Props = {
