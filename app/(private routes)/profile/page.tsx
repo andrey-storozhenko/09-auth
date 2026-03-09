@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getServerMe } from '@/lib/api/serverApi';
 import css from "./ProfilePage.module.css";
 import { Metadata } from 'next';
-
+import Image from "next/image";
 
 const Profile = async () => {
   const user = await getServerMe();
@@ -18,6 +18,13 @@ const Profile = async () => {
         </div>
 
         <div className={css.avatarWrapper}>
+          <Image
+            src="https://picsum.photos/id/237/200/300"
+            alt="User Avatar"
+            width={120}
+            height={120}
+            className={css.avatar}
+          />
         </div>
 
         <div className={css.profileInfo}>
