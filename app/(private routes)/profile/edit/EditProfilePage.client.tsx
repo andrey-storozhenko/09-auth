@@ -23,7 +23,7 @@ const EditProfileClient = () => {
     e.preventDefault();
     try {
       if (!user) return;
-      await updateMe({ userName: username });
+      await updateMe({ username: username });
       router.push('/profile');
     } catch (err) {
       console.error('Failed to update user:', err);
