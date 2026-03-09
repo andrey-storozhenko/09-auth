@@ -19,7 +19,7 @@ const Profile = async () => {
 
         <div className={css.avatarWrapper}>
           <Image
-            src="https://picsum.photos/id/237/200/300"
+            src={user.avatar}
             alt="User Avatar"
             width={120}
             height={120}
