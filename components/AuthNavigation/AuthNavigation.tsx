@@ -8,36 +8,31 @@ import css from "./AuthNavigation.module.css";
 
 const AuthNavigation = () => {
   const router = useRouter();
-  // Отримуємо поточну сесію та юзера
-    const { isAuthenticated, user } = useAuthStore();
-    
-    const clearIsAuthenticated = useAuthStore(
-        (state) => state.clearIsAuthenticated,
-    );
+  const { isAuthenticated, user } = useAuthStore();
+  const clearIsAuthenticated = useAuthStore((state) => state.clearIsAuthenticated);
 
-    const handleLogout = async () => {
-        // Викликаємо logout
-        await logout();
-        // Чистимо глобальний стан
-        clearIsAuthenticated();
-        // Виконуємо навігацію на сторінку авторизації
-        router.push('/sign-in');
-    };
+  const handleLogout = async () => {
+    await logout();
+    clearIsAuthenticated();
+    router.push('/sign-in');
+  };
 
   return (
     <>
-          <li className={css.navigationItem}>
-        <Link href="/profile" prefetch={false} className={css.navigationLink}>
-          Profile
-        </Link>
-      </li>
+      {isAuthenticated && (
+        <li className={css.navigationItem}>
+          <Link href="/profile" prefetch={false} className={css.navigationLink}>
+            Profile
+          </Link>
+        </li>
+      )}
       {isAuthenticated ? (
-         <li className={css.navigationItem}>
-        <p className={css.userEmail}>{user?.email}</p>
-        <button className={css.logoutButton} onClick={handleLogout}>
-          Logout
-        </button>
-      </li>
+        <li className={css.navigationItem}>
+          <p className={css.userEmail}>{user?.email}</p>
+          <button className={css.logoutButton} onClick={handleLogout}>
+            Logout
+          </button>
+        </li>
       ) : (
         <>
           <li>
@@ -47,11 +42,9 @@ const AuthNavigation = () => {
             <Link href="/sign-up">Sign up</Link>
           </li>
         </>
-      )
-    }
+      )}
     </>
   );
 };
 
 export default AuthNavigation;
-
